@@ -16,21 +16,13 @@ function App() {
     connectionTimeoutSeconds: 5,
   });
 
-  // const collections = await typesenseClient.collections().retrieve();
-  // console.log(collections);
-
   useEffect(() => {
     typesenseClient
       .collections("dev_Creators")
       .documents()
       .search({
         q: "*",
-        // facet_by: facet,
-        // filter_by: `tiktokUsername:!=NULL &&  ${allTiktokfilters}`,
-        // sort_by: sortBy,
-        // per_page: pagination.totalItems,
         query_by: "tiktokUsername, legalName",
-        // page
       })
       .then((results) => {
         console.log(results);
